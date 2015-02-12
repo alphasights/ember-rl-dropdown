@@ -7,8 +7,10 @@ export default Ember.Mixin.create({
 
   dropdownSelector: '.rl-dropdown',
 
-  clickOutEventNamespace: 'rl-dropdown',
-  
+  clickOutEventNamespace: function() {
+    return 'rl-dropdown.' + this.get('elementId');
+  }.property('elementId'),
+
   actions: {
     toggleDropdown: function () {
       this.toggleProperty('dropdownExpanded');
